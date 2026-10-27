@@ -15,6 +15,10 @@ python3 -m http.server 8091
 
 Open http://localhost:8091. Designed for 1366 × 800 and wider.
 
+## Updating the live demo
+
+The CSS and JS links in `index.html` end with `?v=…` (version tags). After you change a CSS or JS file, raise the number on all those links (for example `20261027.3` → `20261027.4`) before pushing, so browsers fetch the new files instead of cached ones.
+
 ## What's where
 
 | File | What it does |
