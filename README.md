@@ -34,7 +34,7 @@ Ribbon spec: LIM Figma › New Planning › **Planning Ribbon** (node 13940:3724
 | Time Period, Group By, Sort By, Column, Level | Ribbon row 2, dropdowns + Level stepper |
 | Set as default (Sort By, Column, Level) | Ribbon row 2, one **Set as default** tile. It saves Time Period, Group By, Sort By, Column and Level |
 | Show Full Screen, Show Dependencies, Show Progress Percentage (Time / Work based) | Ribbon row 2, View modes |
-| Download, Import | Ribbon row 2, the two stacked icon buttons (tooltips "Download" / "Import") |
+| Download, Import | Ribbon row 2, two stacked icon buttons: Import on top, Download below |
 | Legend | Ribbon row 1, **Legends** popover |
 
 New, as approved: **filter chips** in the search box, the **Compact** density switch (36 px rows ⇄ 48 px), and the **ribbon collapse** chevron.
@@ -44,7 +44,7 @@ New, as approved: **filter chips** in the search box, the **Compact** density sw
 1. **Completed names.** The recording cut off some values ("Furniture Migra…"). They are completed in `data.js` and marked `// completed`.
 2. **Side-nav tooltips.** The icons follow the Figma side nav; the labels (Dashboard, Sites, Planning, Analysis, Project, Team, File Upload, DMS) are matched to the live app's menu.
 3. **Row colours.** The Critical Date rows use the legend colour (#F5BF5E) as a tint; Figma had no example. The lavender rows (Activity 80–84) come from the live app and have no legend entry.
-4. **Download / Import icons.** Figma uses the same cloud-download icon for both buttons; the demo does too, and the tooltips tell them apart. Import only opens the file picker.
+4. **Import / Download.** Import (cloud-upload icon) sits on top, Download (cloud-download icon) below. Import only opens the file picker.
 5. **Legend labels** use the Figma text ("Logistics Volume - Normal / Critical"); the live app says "High / Low".
 6. **Zoom.** Figma shows zoom-in greyed out at 100%, so zoom runs from 50% to 100%. Fit resets it to 100%. The live app allows zooming in above 100%.
 7. **Table header** labels line up with their columns (in the Figma frame they sit 24 px to the left).

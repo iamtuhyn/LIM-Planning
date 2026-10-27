@@ -83,8 +83,8 @@ window.R = (function () {
       </div>
       <i class="rb-gd"></i>
       <div class="rb-acts">
+        <button class="rb-act" id="acImport" data-tip="Import" data-tip-pos="left">${ms('cloud_upload', 's16')}</button>
         <button class="rb-act" id="acDownload" data-tip="Download" data-tip-pos="left">${ms('cloud_download', 's16')}</button>
-        <button class="rb-act" id="acImport" data-tip="Import" data-tip-pos="left">${ms('cloud_download', 's16')}</button>
       </div>
       <i class="rb-gd"></i>
       <button class="rb-setdef" id="rbSetDefault">${ms('done_all', 's16')}<span>Set as default</span></button>
