@@ -1,75 +1,52 @@
-# CLM · Shipments module — front-end demo
+# LIM · Planning (compact) — front-end demo
 
-A clickable front-end of the CLM **Shipments** module, built on the Amlog design system.
-It's plain HTML, CSS and JavaScript: no build step, no backend. All data lives in the browser (`localStorage`).
+A clickable front-end of the redesigned LIM **Planning** module. The Settings drawer is gone; all its controls now live in a ribbon at the top.
+It's plain HTML, CSS and JavaScript: no build step, no backend. Data lives in the browser (`localStorage`).
 
-- Demo "today" is **25.10.2026**. All dates are in 2026.
-- Site: Augustana College · Bradly Construction Project.
-- Avatar menu (top right) → **Reset demo data** restores the original data before or after a demo.
+- **Design** follows the LIM Figma file: page **New Planning** (screens + `Planning Ribbon` component), built from the source frames on *Activity details update › Updated Gantt Chart* and the Amlog DS.
+- **Data and interactions** follow the live LIM app recording (project *Amazon*, demo "today" = **27.10.2026**).
+- Avatar (top left) → **Reset demo data** restores the original data and settings.
 
 ## Run it locally
 
 ```bash
-cd clm-shipments-demo
-python3 -m http.server 8080
+python3 -m http.server 8091
 ```
 
-Open http://localhost:8080.
+Open http://localhost:8091. Designed for 1366 × 800 and wider.
 
-## Share it live
+## What's where
 
-### Option A: GitHub Pages (permanent link)
+| File | What it does |
+| --- | --- |
+| `assets/js/ribbon.js` | Ribbon. Row 1: search + filter chips, period navigation, Active Today, zoom, fit, refresh, info, Legends, Compact, collapse. Row 2: Time Period, Group By, Sort By, Column, Level, View modes, Activity actions |
+| `assets/js/gantt.js` | Table + timeline, tree, grouping, sorting, filtering, bars, dependencies, drag/resize, linking, hover card, row menu |
+| `assets/js/panels.js` | Right panel: Activity Details, Edit Activity Date, Assign Zone, Add (Sub) Activity, Edit |
+| `assets/js/time.js` | The five time periods and their column headers |
+| `assets/js/data.js` | Demo data from the live app |
 
-1. On github.com, create a new **empty** repository, for example `clm-shipments-demo`. Don't add a README.
-2. In this folder, run:
-   ```bash
-   git remote add origin https://github.com/<your-user>/clm-shipments-demo.git
-   git push -u origin main
-   ```
-3. In the repository, open **Settings → Pages**. Set the source to *Deploy from a branch*, then pick `main` and `/ (root)`. Save.
-4. After about a minute the demo is live at `https://<your-user>.github.io/clm-shipments-demo/`.
+## Where the drawer settings went
 
-A **public** repository is visible to anyone. If the client data is sensitive, use a private repository (Pages for private repositories needs a paid GitHub plan), or use Option B.
+Ribbon spec: LIM Figma › New Planning › **Planning Ribbon** (node 13940:37242). Row 1 = 64 px, row 2 = 80 px.
 
-### Option B: Netlify Drop (fastest, no account needed to start)
+| Settings drawer (live) | New place |
+| --- | --- |
+| Time Period, Group By, Sort By, Column, Level | Ribbon row 2, dropdowns + Level stepper |
+| Set as default (Sort By, Column, Level) | Ribbon row 2, one **Set as default** tile. It saves Time Period, Group By, Sort By, Column and Level |
+| Show Full Screen, Show Dependencies, Show Progress Percentage (Time / Work based) | Ribbon row 2, View modes |
+| Download, Import | Ribbon row 2, the two stacked icon buttons (tooltips "Download" / "Import") |
+| Legend | Ribbon row 1, **Legends** popover |
 
-1. Go to https://app.netlify.com/drop.
-2. Drag the whole `clm-shipments-demo` folder onto the page.
-3. You get a link right away. Create a free account to keep the link permanently.
+New, as approved: **filter chips** in the search box, the **Compact** density switch (36 px rows ⇄ 48 px), and the **ribbon collapse** chevron.
 
-## Demo script (about 10 minutes)
+## Points to confirm
 
-1. **Shipments hub (Timeline)**
-   - Expand *Erne Bauunternehmung*: shipments appear as bars on their day, coloured by status, max 5, then *Show all*.
-   - Hover the ⓘ icon to see the status legend.
-   - Status chips are multi-select. Try Overdue + Active.
-2. **Properties** (⚙): change the time period, hide completed items, and choose which columns are visible.
-3. **List and Cards views**. Use *Group by* to switch between Working package, Destination, Sender and Recipient. Live search highlights matches.
-4. Click a **working package** to open its page:
-   - KPI tiles filter the table.
-   - Add, edit or duplicate shipments, mark as completed, and more.
-5. Click shipment **908-Team pRED** to open the details page:
-   - Change the status (Approve, with equipment confirmation) and use Undo.
-   - Post a comment.
-   - Try the Documents & photos, Annotations and Activity tabs.
-   - Open **Manage**: Edit, Duplicate, Save as template, Cancel.
-6. **Create → Create shipment**: pick a template or start from scratch, then go through the 5 steps and the Overview.
-   - Weather day cards and the express rule.
-   - Material quantity dialog.
-   - Recommended vehicle.
-   - Time slot: drag the bar or pick cells in the grid.
-   - Equipment.
-   - Person picker.
-   - Finish with *Shipment created* → **Approve**.
-7. **Create → Create working package**: a compact form with validation.
-8. **Create → Upload working packages (Excel)**:
-   - Upload any `.xlsx` file. The demo simulates 12 rows, 2 of them with errors.
-   - Fix the errors inline, then import. The upload history updates.
-   - *Download sample file* gives a real CSV. Upload it to see real parsing.
-
-## Notes
-
-- Only the Shipments module is interactive. Other menu items show "Not part of this demo".
-- Uploaded files never leave the browser. Excel (.xlsx) parsing is simulated; CSV is parsed for real.
-- Icons are the CLM custom icons (vehicles, equipment, statuses, legend), exported from Figma into `assets/js/icons-clm.js`. Raw SVGs are in `assets/icons/svg`.
-- Fonts (Roboto, Material Symbols) load from Google Fonts, so the demo needs internet.
+1. **Completed names.** The recording cut off some values ("Furniture Migra…"). They are completed in `data.js` and marked `// completed`.
+2. **Side-nav tooltips.** The icons follow the Figma side nav; the labels (Dashboard, Sites, Planning, Analysis, Project, Team, File Upload, DMS) are matched to the live app's menu.
+3. **Row colours.** The Critical Date rows use the legend colour (#F5BF5E) as a tint; Figma had no example. The lavender rows (Activity 80–84) come from the live app and have no legend entry.
+4. **Download / Import icons.** Figma uses the same cloud-download icon for both buttons; the demo does too, and the tooltips tell them apart. Import only opens the file picker.
+5. **Legend labels** use the Figma text ("Logistics Volume - Normal / Critical"); the live app says "High / Low".
+6. **Zoom.** Figma shows zoom-in greyed out at 100%, so zoom runs from 50% to 100%. Fit resets it to 100%. The live app allows zooming in above 100%.
+7. **Table header** labels line up with their columns (in the Figma frame they sit 24 px to the left).
+8. Side panels open **below the ribbon**, so the controls stay visible.
+9. Under ~1320 px width, ribbon row 2 scrolls sideways.
