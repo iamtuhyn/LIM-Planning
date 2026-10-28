@@ -110,11 +110,11 @@ mark { background: #F5E79E; color: inherit; border-radius: 2px; }
 
 /* ---------------- ribbon · row 2 (Figma "Row 2 · Ribbon groups": 80px, pad 0 12, gap 16) ---------------- */
 .rb-row2 { height: 80px; display: flex; align-items: flex-start; gap: 16px; padding: 0 12px; background: #fff; border-bottom: 1px solid var(--border-bar); overflow-x: auto; overflow-y: hidden; scrollbar-width: thin; }
-.rb-g1 { display: flex; gap: 10px; padding-top: 8px; flex: 1 0 auto; min-width: 671px; }   /* Group By + Column fill the free width */
+.rb-g1 { display: flex; gap: 10px; padding-top: 8px; flex: 1 0 auto; min-width: 691px; }   /* Group By + Column fill the free width */
 .rb-lr { height: 24px; display: flex; align-items: center; gap: 8px; }
 .rb-dd { display: flex; flex-direction: column; gap: 2px; flex: none; }
-#ddPeriod { width: 96px; } #ddSort { width: 100px; }
-#ddGroup { flex: 1 1 140px; min-width: 140px; } #ddCols { flex: 1 1 167px; min-width: 167px; }
+#ddPeriod { width: 136px; }   /* fits "Project Duration" */ #ddSort { width: 100px; }
+#ddGroup { flex: 1 1 120px; min-width: 120px; } #ddCols { flex: 1 1 167px; min-width: 167px; }
 .rb-field { width: 100%; height: 32px; display: flex; align-items: center; gap: 8px; padding: 8px 4px 8px 12px; border: 1px solid var(--border-field); border-radius: 4px; background: #fff; text-align: left; font-size: 12px; line-height: 16px; letter-spacing: .2px; color: var(--t1); }
 .rb-field > span:first-child { flex: 1; }
 .rb-field .ms { color: var(--t2); }
@@ -147,11 +147,10 @@ mark { background: #F5E79E; color: inherit; border-radius: 2px; }
 .rb-radio.on .rd::after { content: ''; position: absolute; inset: 2px; border-radius: 50%; background: var(--olive); }
 .rb-radio:disabled { opacity: .4; }
 .rb-acts { width: 35px; flex: none; display: flex; flex-direction: column; align-items: center; gap: 1px; padding-top: 10px; }
-.rb-act { width: 32px; height: 32px; padding: 8px; border-radius: 8px; display: grid; place-items: center; color: var(--t2); background: #fff; }
-.rb-act:hover { background: var(--subtle); }
-.rb-setdef { width: 89px; flex: none; align-self: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 4px; border-radius: 8px; color: var(--olive-btn); }
+.rb-act { width: 32px; height: 32px; padding: 8px; border-radius: 4px; display: grid; place-items: center; color: var(--t2); background: #fff; }
+.rb-act:hover, .rb-setdef:hover { background: rgba(38,38,51,.06); }   /* same hover as the row 1 icon buttons */
+.rb-setdef { flex: none; align-self: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 8px 6px; border-radius: 4px; color: var(--olive-btn); }
 .rb-setdef span:not(.ms) { font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: .4px; text-transform: uppercase; white-space: nowrap; }
-.rb-setdef:hover { background: var(--subtle); }   /* same hover as Download / Import */
 
 /* ---------------- gantt ---------------- */
 .gantt { flex: 1; min-height: 0; position: relative; }
@@ -173,7 +172,7 @@ mark { background: #F5E79E; color: inherit; border-radius: 2px; }
 .g-cols { position: absolute; top: 0; bottom: 0; }
 .g-col { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--grid); }
 .g-col.cur { background: var(--cur-col); }
-.g-mark { position: absolute; top: 0; bottom: 0; width: 6px; margin-left: -3px; z-index: 1; background: linear-gradient(var(--mark) 50%, transparent 0) center / 1px 4px repeat-y; }
+.g-mark { position: absolute; top: 0; bottom: 0; width: 6px; margin-left: -3px; z-index: 1; background: linear-gradient(var(--mark) 50%, transparent 0) center / 2px 6px repeat-y; }
 .g-today { --mark: var(--olive); z-index: 2; }
 .g-last { --mark: var(--today); }
 .gantt.sliding .g-tl, .gantt.sliding .g-cols > *, .gantt.sliding .g-deps, .gantt.sliding .g-track > * { animation: g-slide .3s cubic-bezier(.2, 0, 0, 1); }
