@@ -1,1 +1,6 @@
 .DS_Store
+
+# Ribbon prototype: published in joacim-gain/LIM-App only, not in this repo
+single-line*.html
+assets/css/single-line*.css
+assets/js/ribbon-single*.js
